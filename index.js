@@ -5,31 +5,39 @@ module.exports = getKey
 var cache = {}, nullObj = {}, undefinedObj = {}
 
 function getKey (key) {
-	if (cache[key]) return cache[key]
-
 	// tagged template
 	if (Array.isArray(key) && key.raw) key = String.raw.apply(this, arguments)
+
+	if (key === null) {
+		return nullObj
+	}
+	if (key === undefined) {
+		return undefinedObj
+	}
+
 	var obj
+
 	if (typeof key === 'number' || key instanceof Number) {
+		if (cache[key]) return cache[key]
 		obj = new Number(key)
+		cache[key] = obj
+		return obj
 	}
-	else if (typeof key === 'string' || key instanceof String) {
+
+	if (typeof key === 'string' || key instanceof String) {
+		if (cache[key]) return cache[key]
 		obj = new String(key)
+		cache[key] = obj
+		return obj
 	}
-	else if (typeof key === 'boolean' || key instanceof Boolean) {
+
+	if (typeof key === 'boolean' || key instanceof Boolean) {
+		if (cache[key]) return cache[key]
 		obj = new Boolean(key)
-	}
-	else if (key === null) {
-		obj = nullObj
-	}
-	else if (key === undefined) {
-		obj = undefinedObj
-	}
-	else {
-		obj = key
+		cache[key] = obj
+		return obj
 	}
 
-	cache[key] = obj
-
-	return obj
+	// treat any other non-primitive key directly
+	return key
 }

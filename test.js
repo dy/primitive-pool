@@ -33,3 +33,12 @@ map.set(p(NaN), 8)
 a.equal(map.get(p(NaN)), 8)
 
 a.equal(map.get(p()), 4)
+
+
+var o = {}
+a.equal(p(o), o)
+
+var arr = [1]
+var farr = [1]
+a.equal(p(arr), arr)
+a.equal(p(farr), farr)
