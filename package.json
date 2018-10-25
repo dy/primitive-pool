@@ -1,6 +1,6 @@
 {
   "name": "primitive-pool",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Pool of objects for primitives. (Make WeakMap accept primitive keys)",
   "main": "index.js",
   "scripts": {
