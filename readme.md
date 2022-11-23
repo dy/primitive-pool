@@ -8,19 +8,23 @@ Get object for a primitive value. Useful to make WeakMap store strings/numbers a
 
 
 ```js
-let p = require('primitive-pool')
+import p from 'primitive-pool'
 
 let map = new WeakMap()
 
 map.set(p('abc'), 123)
 map.get(p('abc')) // 123
 
-map.set(p``, 456)
-map.get(p``) // 456
-
 map.set(p(null), 789)
 map.get(p(null)) // 789
 
 map.set(p(123), 'abc')
 map.get(p(123)) // 'abc'
+
+// non-primitives are stored as is
+let a = {}
+map.set(p(a), 'xyz')
+map.get(a) // 'xyz'
 ```
+
+Alternative can be done via weak refs.
