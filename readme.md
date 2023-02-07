@@ -29,4 +29,5 @@ map.get(a) // 'xyz'
 
 ## Alternatives
 
+* [weak-value](https://github.com/WebReflection/weak-value)
 * [not-so-weak](https://github.com/WebReflection/not-so-weak)
