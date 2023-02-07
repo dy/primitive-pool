@@ -27,4 +27,6 @@ map.set(p(a), 'xyz')
 map.get(a) // 'xyz'
 ```
 
-Alternative can be done via weak refs.
+## Alternatives
+
+* [not-so-weak](https://github.com/WebReflection/not-so-weak)
